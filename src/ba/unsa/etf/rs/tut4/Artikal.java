@@ -7,7 +7,6 @@ public class Artikal {
     private String sifra;
     private String naziv;
     private double cijena;
- //  private  ArrayList<Artikal> lista = new ArrayList<Artikal>();
 
 
     public Artikal() {}
@@ -30,17 +29,19 @@ public class Artikal {
 
     public static ArrayList<Artikal> izbaciDuplikate(ArrayList<Artikal> lista)
     {
-        ArrayList<Artikal> lista1 = new ArrayList<>();
+
         for(int i = 0; i < lista.size(); i++)
         {
             for(int j = i+1; j < lista.size(); j++)
             {
 
-               if (lista.get(i).equals(lista.get(j))) lista.remove(j);
-               lista1.add(lista.get(i));
+               if (lista.get(i).equals(lista.get(j))) {
+                   lista.remove(j);
+                   j--;
+               }
             }
         }
-        return lista1;
+        return lista;
     }
 
     public String getSifra() {
@@ -82,20 +83,5 @@ public class Artikal {
         if(!this.sifra.equals(a.sifra) || !this.naziv.equals(a.naziv) || this.cijena != a.cijena) return false;
         return true;
     }
-
-   /* public static void IzbaciDuplikate(ArrayList<Artikal> artikli)
-    {
-        for(int i = 0; i < artikli.size(); i++)
-        {
-           for(int j = i+1; j < artikli.size(); j++)
-            {
-                if(artikli.get(i).equals(artikli.get(j))) artikli.remove(j);
-                j--;
-            }
-        }
-    }*/
-
-
-
 
 }
