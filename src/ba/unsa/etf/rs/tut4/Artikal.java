@@ -22,7 +22,7 @@ public class Artikal {
         sifra = atributi[0];
         naziv = atributi[1];
         cijena = Double.parseDouble(atributi[2]);
-       setSifra(sifra);
+        setSifra(sifra);
         setNaziv(naziv);
         setCijena(cijena);
     }
