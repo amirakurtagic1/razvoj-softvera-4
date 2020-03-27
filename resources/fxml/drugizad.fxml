@@ -81,23 +81,23 @@
                      </children></VBox>
                   <VBox prefHeight="363.0" prefWidth="256.0" GridPane.columnIndex="1" GridPane.rowSpan="2">
                      <children>
-                        <ChoiceBox prefWidth="150.0">
+                        <ChoiceBox fx:id="item" prefWidth="150.0">
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin></ChoiceBox>
-                        <Spinner>
+                        <Spinner fx:id="kolicina" min = "1" max = "100">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                         </Spinner>
-                        <Button mnemonicParsing="false" text="Dodaj">
+                        <Button mnemonicParsing="false" onAction="#Add" text="Dodaj">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>
                         </Button>
                         <FlowPane prefHeight="200.0" prefWidth="200.0">
                            <children>
-                              <TextArea prefHeight="180.0" prefWidth="200.0">
+                              <TextArea fx:id="racun" editable="false" prefHeight="180.0" prefWidth="200.0">
                                  <FlowPane.margin>
                                     <Insets top="20.0" />
                                  </FlowPane.margin>

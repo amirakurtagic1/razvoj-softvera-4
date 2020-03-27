@@ -18,6 +18,7 @@ public class Artikal {
     }
 
     public Artikal(String artikal) {
+        if(artikal.isEmpty()) throw new IllegalArgumentException("Nije unesen artikal!");
         String[] atributi = artikal.split(",");
         sifra = atributi[0];
         naziv = atributi[1];
@@ -29,7 +30,7 @@ public class Artikal {
 
     public static ArrayList<Artikal> izbaciDuplikate(ArrayList<Artikal> lista)
     {
-
+        if(lista.size() == 0) throw new IllegalArgumentException("Niste unijeli proizvode!");
         for(int i = 0; i < lista.size(); i++)
         {
             for(int j = i+1; j < lista.size(); j++)

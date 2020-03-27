@@ -22,21 +22,20 @@ public class Main extends Application {
     public static void main(String[] args) {
       try {
           ArrayList<Artikal> lista = new ArrayList<>();
-          Artikal artikal = new Artikal("Nesto,naziv,2");
+          Artikal artikal = new Artikal("HLB001,Hljeb,1");
           lista.add(artikal);
-          Artikal art1 = new Artikal("Nesto,naziv,3.5");
+          Artikal art1 = new Artikal("MLK001,Mlijeko,1.50");
           lista.add(art1);
-          Artikal art2 = new Artikal("Nesto", "naziv", 3.5);
+          Artikal art2 = new Artikal("UL001", "Ulje", 2.00);
           lista.add(art2);
-
+          Artikal art3 = new Artikal("SK001", "Sok", 2.50);
+          lista.add(art3);
+          Artikal art4 = new Artikal("SCR001", "Secer", 1.80);
+          lista.add(art4);
 
 
           Artikal.izbaciDuplikate(lista);
 
-          for(int i = 0; i < lista.size(); i++)
-          {
-              System.out.println(lista.get(i));
-          }
       } catch(Exception e){
           System.out.println(e.getMessage());
       }
