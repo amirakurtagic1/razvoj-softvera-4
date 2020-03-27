@@ -21,36 +21,41 @@ public class Contoller {
     String tekst = new String();
     ArrayList<Artikal> bezDuplikata = new ArrayList<>();
     ArrayList<Artikal> lista1 = new ArrayList<>();
+    ArrayList<Artikal> listaArtikala = new ArrayList<>();
+    ArrayList<Artikal> UkupnaListaArtikala = new ArrayList<>();
+    ArrayList<Artikal> UkupniPopisArtikala = new ArrayList<>();
 
+    String s = new String();
 
     public void onClick(ActionEvent actionEvent) {
-
         String s = Unos.getText();
         String[] razdvojeni = s.split("\\n");
 
-        ArrayList<Artikal> listaArtikala = new ArrayList<Artikal>();
-       // Artikal l = new Artikal("jedan,", "dva,", 3);
-        //listaArtikala.add(l);
+
         for (String s1 : razdvojeni) {
             listaArtikala.add(new Artikal(s1));
         }
 
+        UkupnaListaArtikala.addAll(listaArtikala);
+        UkupnaListaArtikala.addAll(bezDuplikata);
 
 
-        bezDuplikata = izbaciDuplikate(listaArtikala);
-        //nova1 = bezDuplikata;
-          //  String tekst = new String();
+        bezDuplikata = izbaciDuplikate(UkupnaListaArtikala);
+
         for (Artikal a: bezDuplikata) {
                 lista1.add(a);
                  tekst =tekst +  a.getSifra() + "," + a.getNaziv() + "," + a.getCijena() + System.lineSeparator();
-            Ispis.setText(tekst);
+
+                 Ispis.setText(tekst);
+
         }
-            ObservableList<Artikal> obsList = FXCollections.observableList(lista1);
+            tekst = "";
+            ObservableList<Artikal> obsList = FXCollections.observableArrayList(lista1);
             item.setItems(obsList);
             item.getSelectionModel().selectFirst();
+            lista1.clear();
 
     }
-
 
         String red = new String();
          double ukupno;
@@ -66,7 +71,6 @@ public class Contoller {
                 cijena = art.getCijena();
                 kol = (int) kolicina.getValue();
                 ukupno = ukupno + cijena*kol;
-               // String red = new String();
 
                 red = red + sifra + "     " + kol + "     " + cijena*kol + System.lineSeparator();
                 racun.setText(red + "UKUPNO         " + ukupno);
