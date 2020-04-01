@@ -1,10 +1,12 @@
 package ba.unsa.etf.rs.tut4;
 
+
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
+
 
 class ArtikalTest {
 
@@ -139,5 +141,19 @@ class ArtikalTest {
         assertTrue(lista.contains(new Artikal("DEF", "Usluga", 200)));
         assertFalse(lista.contains(new Artikal("ABC", "Usluga", 100)));
         assertFalse(lista.contains(new Artikal("DEF", "Usluga", 100)));
+    }
+
+    @Test
+    void IspitivanjeToString (){
+        Artikal a = new Artikal("Sifra1,Naziv1,1");
+        assertEquals("Sifra1,Naziv1,1.0", a.toString());
+    }
+
+    @Test
+    void IspitivanjeKontruktoraBezParametara() {
+        Artikal artikal = new Artikal();
+        assertEquals(null, artikal.getSifra());
+        assertEquals(null, artikal.getNaziv());
+        assertEquals(0.0, artikal.getCijena());
     }
 }
