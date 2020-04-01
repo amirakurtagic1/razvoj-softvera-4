@@ -38,11 +38,27 @@ class ContollerTest {
         Button button = robot.lookup("#button").queryButton();
         assertNotNull(button);
         robot.clickOn("#Unos");
-        robot.write("Jedan,jedan,1\nDva,dva,2");
+        robot.write("Sifra1,Proizvod1,1\nSifra2,Proizvod2,2");
         robot.clickOn(button);
        // TextArea ispis = new TextArea();
         TextArea ispis =  robot.lookup("#Ispis").queryAs(TextArea.class);
-        assertEquals(true, ispis.getText().contains("Jedan,jedan,1.0\nDva,dva,2.0"));
+        assertEquals(true, ispis.getText().contains("Sifra1,Proizvod1,1.0\nSifra2,Proizvod2,2.0"));
+    }
+
+    @Test
+    void IzbaciDuplikateTest(FxRobot robot){
+        Button button = robot.lookup("#button").queryButton();
+        assertNotNull(button);
+        robot.clickOn("#Unos");
+        robot.write("Sifra1,Proizvod1,1\nSifra2,Proizvod2,2\nSifra2,Proizvod2,2\n");
+        robot.clickOn(button);
+        robot.clickOn("#Unos");
+        robot.write("Sifra1,Proizvod1,1");
+        robot.clickOn(button);
+        TextArea ispis =  robot.lookup("#Ispis").queryAs(TextArea.class);
+        assertEquals(true, ispis.getText().contains("Sifra1,Proizvod1,1.0\nSifra2,Proizvod2,2.0"));
+
+
 
     }
 
