@@ -57,6 +57,27 @@ class ContollerTest {
         robot.clickOn(button);
         TextArea ispis =  robot.lookup("#Ispis").queryAs(TextArea.class);
         assertEquals(true, ispis.getText().contains("Sifra1,Proizvod1,1.0\nSifra2,Proizvod2,2.0"));
+    }
+
+    @Test
+    void IspitivanjeArtikla(FxRobot robot){
+        robot.clickOn("#Unos");
+        robot.write("Sifra1,Proizvod1,1");
+        robot.clickOn("#button");
+        TextArea unos = robot.lookup("#Unos").queryAs(TextArea.class);
+        String tekst = new String();
+        tekst = unos.getText();
+        Artikal artikal = new Artikal(tekst);
+        artikal.setSifra("Sifra2");
+        artikal.setNaziv("Proizvod2");
+        artikal.setCijena(2);
+        /*unos.clear();
+        unos.setText(String.valueOf(artikal));
+        robot.clickOn("#button");
+        TextArea ispis =  robot.lookup("#Ispis").queryAs(TextArea.class);*/
+        assertEquals("Sifra2", artikal.getSifra());
+        assertEquals("Proizvod2", artikal.getNaziv());
+        assertEquals(2.0, artikal.getCijena());
 
 
 
