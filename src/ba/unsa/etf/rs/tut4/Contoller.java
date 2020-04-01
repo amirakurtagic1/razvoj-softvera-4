@@ -54,7 +54,6 @@ public class Contoller {
             item.setItems(obsList);
             item.getSelectionModel().selectFirst();
             lista1.clear();
-
     }
 
         String red = new String();
