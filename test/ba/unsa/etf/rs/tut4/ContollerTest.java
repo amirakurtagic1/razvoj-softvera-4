@@ -92,21 +92,48 @@ class ContollerTest {
         }
         robot.clickOn("Sifra2,Proizvod2,2.0");
         Spinner spinner = robot.lookup("#kolicina").queryAs(Spinner.class);
-        robot.clickOn("kolicina");
+        robot.clickOn("#kolicina");
         try{
             Thread.sleep(200);
         }catch (InterruptedException e){
             e.printStackTrace();
         }
+       robot.eraseText(3);
         robot.write("2");
+        robot.clickOn("#Dodaj");
+        robot.clickOn("#item");
+        Platform.runLater(() -> item.show());
+        try{
+            Thread.sleep(200);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        robot.clickOn("Sifra3,Proizvod3,3.0");
+        robot.clickOn("#kolicina");
+        try{
+            Thread.sleep(200);
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+        robot.eraseText(3);
+        robot.write("1");
         robot.clickOn("#Dodaj");
         TextArea racun = robot.lookup("#racun").queryAs(TextArea.class);
         Racun racun1 = new Racun();
-        racun1.dodajStavku(new Artikal("HLB", "Hljeb", 1.1), 2);
-
-
+        racun1.dodajStavku(new Artikal("Sifra2", "Proizvod2", 2), 2);
+        racun1.dodajStavku(new Artikal("Sifra3", "Proizvod3", 3), 1);
+        racun1.ukupanIznos();
+        assertEquals(7.0, racun1.ukupanIznos());
+        assertEquals("Sifra2     2     4.0\nSifra3     1     3.0\nUKUPNO         7.0", racun.getText());
     }
 
+    @Test
+    void GetSetArtikalTest(FxRobot robot){
 
+        Racun.StavkaRacuna racun1 = new Racun.StavkaRacuna(new Artikal("Sifra2", "Proizvod2", 2), 2);
+        racun1.setArtikal(new Artikal("Sifra4","Proizvod4",4));
+        racun1.setKolicina(1);
+        assertEquals(new Artikal("Sifra4","Proizvod4",4.0), racun1.getArtikal());
+    }
 
 }
