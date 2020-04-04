@@ -49,7 +49,7 @@
             </GridPane>
          </content>
     </Tab>
-    <Tab text="Račun" fx:id="Tab2">
+    <Tab fx:id="Tab2" text="Račun">
         <content>
         <GridPane>
         <columnConstraints>
@@ -85,7 +85,7 @@
                            <VBox.margin>
                               <Insets top="10.0" />
                            </VBox.margin></ChoiceBox>
-                        <Spinner fx:id="kolicina" max="100" min="1">
+                        <Spinner fx:id="kolicina" editable="true" max="100" min="1">
                            <VBox.margin>
                               <Insets top="20.0" />
                            </VBox.margin>

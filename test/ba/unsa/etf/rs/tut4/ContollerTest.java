@@ -68,16 +68,8 @@ class ContollerTest {
         robot.write("Sifra1,Proizvod1,1");
         robot.clickOn("#button");
         TextArea unos = robot.lookup("#Unos").queryAs(TextArea.class);
-        String tekst = new String();
-        tekst = unos.getText();
-        Artikal artikal = new Artikal(tekst);
-        artikal.setSifra("Sifra2");
-        artikal.setNaziv("Proizvod2");
-        artikal.setCijena(2);
-        /*unos.clear();
-        unos.setText(String.valueOf(artikal));
-        robot.clickOn("#button");
-        TextArea ispis =  robot.lookup("#Ispis").queryAs(TextArea.class);*/
+        Artikal artikal = new Artikal("Sifra2", "Proizvod2", 2);
+        Artikal artikal1 = new Artikal();
         assertEquals("Sifra2", artikal.getSifra());
         assertEquals("Proizvod2", artikal.getNaziv());
         assertEquals(2.0, artikal.getCijena());
